@@ -39,4 +39,20 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-.claude/worktrees/
+
+# Claude Code
+.claude/
+
+# Agent-generated docs
+AGENTS.md
+CLAUDE.md
+docs/AUDIT_REPORT.md
+docs/TEST_REPORT.md
+docs/DATA_MODELS.md
+docs/COMPONENTS.md
+docs/DESIGN_SYSTEM.md
+docs/USER_FLOWS.md
+docs/TECH_SPEC.md
+docs/decisions.md
+docs/tasks.json
+docs/design-preview.html
