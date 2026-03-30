@@ -34,7 +34,6 @@ export function HeroSection() {
               variant="char"
               as="h1"
               className="text-[length:var(--text-7xl)] font-medium tracking-tight leading-[1.1]"
-              scrub
             />
             <BlurText
               text="Crafting bespoke door designs tailored to your home's unique character. Excellence in every entry."
@@ -103,7 +102,7 @@ export function HeroSection() {
             >
               <div className="relative aspect-[3/4] w-full rounded-[12px] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
+                  src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76cb?w=800&q=80"
                   alt="Luxury bespoke entrance door with elegant architectural details"
                   fill
                   className="object-cover"

@@ -37,7 +37,7 @@ export function FeatureCard({
     >
       <GlassCard
         padding="lg"
-        className="w-full min-h-[50vh] lg:min-h-[75vh] overflow-hidden"
+        className="w-full min-h-[50vh] lg:min-h-[75vh] overflow-hidden !bg-[var(--background)] shadow-md"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 h-full">
           {/* Text side */}
