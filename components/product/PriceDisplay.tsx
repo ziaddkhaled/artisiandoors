@@ -51,7 +51,7 @@ export function PriceDisplay({
             .map((mod) => (
               <span
                 key={mod.label}
-                className="text-[length:var(--text-xs)] text-accent"
+                className="text-[length:var(--text-xs)] text-muted"
               >
                 {mod.label}: +{formatCurrency(mod.amount)}
               </span>

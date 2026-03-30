@@ -152,7 +152,7 @@ function InViewBlurText({
           aria-hidden="true"
           className={cn(
             "inline-block",
-            "will-change-[filter,opacity,transform]",
+            "[&:not(.motion-finished)]:will-change-[filter,opacity,transform]",
             variant === "word" && "mr-[0.25em]"
           )}
           initial={{ filter: "blur(10px)", opacity: 0, y: 4 }}
@@ -264,7 +264,7 @@ function ScrubChar({
       aria-hidden="true"
       className={cn(
         "inline-block",
-        "will-change-[filter,opacity,transform]",
+        "[&:not(.motion-finished)]:will-change-[filter,opacity,transform]",
         isWord && "mr-[0.25em]"
       )}
       style={{

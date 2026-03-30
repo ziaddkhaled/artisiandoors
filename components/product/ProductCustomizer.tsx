@@ -35,7 +35,7 @@ export function ProductCustomizer({
           <legend className="text-[length:var(--text-sm)] font-medium text-foreground mb-1">
             {group.label}
           </legend>
-          <div className="flex flex-wrap gap-2" role="radiogroup">
+          <div className="flex flex-wrap gap-2">
             {group.options.map((option) => {
               const isSelected = selected[key] === option.id;
 
@@ -57,7 +57,6 @@ export function ProductCustomizer({
                   whileTap={
                     prefersReducedMotion ? undefined : { scale: 0.97 }
                   }
-                  layout
                   transition={{ duration: 0.15 }}
                 >
                   <input
@@ -75,7 +74,7 @@ export function ProductCustomizer({
                   {option.priceModifier > 0 && (
                     <span className={cn(
                       "text-[length:var(--text-xs)]",
-                      isSelected ? "text-primary-cta-text/70" : "text-accent"
+                      isSelected ? "text-primary-cta-text/70" : "text-muted"
                     )}>
                       +{formatCurrency(option.priceModifier)}
                     </span>

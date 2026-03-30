@@ -18,10 +18,11 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav aria-label="Breadcrumb">
       <motion.ol
-        className="flex flex-wrap items-center gap-1 text-[length:var(--text-sm)] text-accent"
+        className="flex flex-wrap items-center gap-1 text-[length:var(--text-sm)] text-muted"
         initial="hidden"
         animate="visible"
         variants={{
+          hidden: {},
           visible: {
             transition: { staggerChildren: STAGGER_NAV_LINKS },
           },

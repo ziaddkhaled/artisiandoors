@@ -32,7 +32,7 @@ export function QuantityControl({
         disabled={isMin}
         aria-label="Decrease quantity"
         className={cn(
-          "flex items-center justify-center w-8 h-8 transition-colors duration-150",
+          "flex items-center justify-center w-11 h-11 transition-colors duration-150",
           isMin
             ? "text-accent/40 cursor-not-allowed"
             : "text-foreground hover:bg-foreground/5"
@@ -43,7 +43,7 @@ export function QuantityControl({
       </motion.button>
       <motion.span
         key={value}
-        className="flex items-center justify-center w-8 h-8 text-[length:var(--text-sm)] font-medium"
+        className="flex items-center justify-center w-11 h-11 text-[length:var(--text-sm)] font-medium"
         aria-live="polite"
         initial={prefersReducedMotion ? {} : { opacity: 0.6, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -56,7 +56,7 @@ export function QuantityControl({
         disabled={isMax}
         aria-label="Increase quantity"
         className={cn(
-          "flex items-center justify-center w-8 h-8 transition-colors duration-150",
+          "flex items-center justify-center w-11 h-11 transition-colors duration-150",
           isMax
             ? "text-accent/40 cursor-not-allowed"
             : "text-foreground hover:bg-foreground/5"

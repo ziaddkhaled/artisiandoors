@@ -51,7 +51,7 @@ export function ContactSection() {
           </motion.div>
 
           <motion.p
-            className="text-[length:var(--text-xs)] text-accent max-w-xs"
+            className="text-[length:var(--text-xs)] text-muted max-w-xs"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

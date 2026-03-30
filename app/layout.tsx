@@ -8,7 +8,7 @@ import "./globals.css";
 
 const nunito = Nunito({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
   variable: "--font-nunito",
 });
@@ -27,6 +27,21 @@ export const metadata: Metadata = {
     description:
       "Handcrafted bespoke doors tailored to your home's unique character.",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "ArtisanDoors — Luxury Bespoke Door Design Studio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ArtisanDoors | Luxury Bespoke Door Design Studio",
+    description:
+      "Handcrafted bespoke doors tailored to your home's unique character.",
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -38,10 +53,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${nunito.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-foreground focus:text-background focus:rounded-xl focus:outline-none"
+        >
+          Skip to main content
+        </a>
         <CartProvider>
           <LenisProvider>
             <Navbar />
-            <main className="flex-1">{children}</main>
+            <main id="main-content" className="flex-1">{children}</main>
             <Footer />
           </LenisProvider>
         </CartProvider>

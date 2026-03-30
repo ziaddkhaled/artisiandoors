@@ -88,16 +88,16 @@ export function MetricCard({ value, label, index = 0 }: MetricCardProps) {
         delay: prefersReducedMotion ? 0 : index * STAGGER_CARDS,
       }}
     >
-      <dt className="text-[length:var(--text-9xl)] font-medium text-foreground leading-none">
+      <dd className="text-[length:var(--text-9xl)] font-medium text-foreground leading-none">
         {prefersReducedMotion ? (
           value
         ) : (
           <CountUp value={value} isInView={isInView} duration={1.5} />
         )}
-      </dt>
-      <dd className="text-[length:var(--text-sm)] text-muted mt-auto">
-        {label}
       </dd>
+      <dt className="text-[length:var(--text-sm)] text-muted mt-auto">
+        {label}
+      </dt>
     </motion.div>
   );
 }

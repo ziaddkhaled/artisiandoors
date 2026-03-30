@@ -1,6 +1,7 @@
 import type { CartItem, CartState, CartAction, CartTotals } from '@/types';
 import type { SelectedOptions } from '@/types';
 import { TAX_RATE } from './pricing';
+import { cartItemSchema } from './validation';
 
 /**
  * localStorage key for persisting the cart.
@@ -109,7 +110,9 @@ export function saveCartToStorage(items: CartItem[]): void {
     window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
   } catch (error) {
     // Silently fail -- quota exceeded or storage unavailable
-    console.warn('Failed to save cart to localStorage:', error);
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Failed to save cart to localStorage:', error);
+    }
   }
 }
 
@@ -125,20 +128,17 @@ export function loadCartFromStorage(): CartItem[] {
 
     const parsed = JSON.parse(stored);
 
-    // Basic validation: ensure it's an array of objects with required fields
+    // Structural validation: ensure it's an array, then validate each item via Zod (SEC-003)
     if (!Array.isArray(parsed)) return [];
 
-    return parsed.filter(
-      (item: unknown): item is CartItem =>
-        typeof item === 'object' &&
-        item !== null &&
-        'id' in item &&
-        'productSlug' in item &&
-        'quantity' in item &&
-        'unitPrice' in item
-    );
+    return parsed
+      .map((item: unknown) => cartItemSchema.safeParse(item))
+      .filter((result): result is { success: true; data: CartItem } => result.success)
+      .map((result) => result.data as CartItem);
   } catch (error) {
-    console.warn('Failed to load cart from localStorage:', error);
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Failed to load cart from localStorage:', error);
+    }
     return [];
   }
 }
@@ -151,6 +151,8 @@ export function clearCartStorage(): void {
     if (typeof window === 'undefined') return;
     window.localStorage.removeItem(CART_STORAGE_KEY);
   } catch (error) {
-    console.warn('Failed to clear cart from localStorage:', error);
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Failed to clear cart from localStorage:', error);
+    }
   }
 }

@@ -52,11 +52,14 @@ export function EmailForm({ onSubmit, variant = "inline" }: EmailFormProps) {
           exit={{ opacity: 0 }}
         >
           <div className="card flex items-center gap-1 p-[2px] rounded-[12px] border border-white">
+            <label htmlFor="email-signup" className="sr-only">
+              Email address
+            </label>
             <input
+              id="email-signup"
               type="email"
               placeholder="Enter your email"
               className="flex-1 bg-transparent px-3 py-2 text-[length:var(--text-sm)] text-foreground placeholder:text-accent/60 focus:outline-none min-w-0"
-              aria-label="Email address"
               {...register("email")}
             />
             <PrimaryButton

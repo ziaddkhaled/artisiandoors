@@ -169,13 +169,13 @@ export function AboutPageClient() {
                   },
                 ].map((item) => (
                   <div key={item.step} className="flex gap-3">
-                    <span className="text-[length:var(--text-sm)] font-semibold text-accent flex-shrink-0 w-8">
+                    <span className="text-[length:var(--text-sm)] font-semibold text-muted flex-shrink-0 w-8">
                       {item.step}
                     </span>
                     <div>
-                      <h4 className="text-[length:var(--text-sm)] font-semibold">
+                      <h3 className="text-[length:var(--text-sm)] font-semibold">
                         {item.title}
-                      </h4>
+                      </h3>
                       <p className="text-[length:var(--text-sm)] text-muted">
                         {item.desc}
                       </p>

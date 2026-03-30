@@ -42,7 +42,7 @@ export function Pagination({
             return (
               <span
                 key={`ellipsis-${i}`}
-                className="px-2 py-2 text-[length:var(--text-sm)] text-accent"
+                className="px-2 py-2 text-[length:var(--text-sm)] text-muted"
               >
                 ...
               </span>

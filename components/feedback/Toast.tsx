@@ -79,7 +79,7 @@ export function Toast({
           className="fixed bottom-6 right-6 z-[var(--z-toast)] max-w-sm"
           {...motionProps}
           role={config.role}
-          aria-live="polite"
+          aria-live={config.role === "alert" ? undefined : "polite"}
         >
           <div
             className={cn(

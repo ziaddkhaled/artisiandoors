@@ -71,7 +71,7 @@ export function Footer() {
         {/* Divider */}
         <div className="border-t border-[rgba(245,244,240,0.2)] mt-10 pt-6">
           <div className="flex flex-col md:flex-row justify-between gap-2 text-[length:var(--text-xs)] text-dark-muted">
-            <p>2025 ArtisanDoors. All rights reserved.</p>
+            <p>&copy; 2026 ArtisanDoors. All rights reserved.</p>
             <Link
               href="#"
               className="hover:text-dark-text transition-colors duration-150"

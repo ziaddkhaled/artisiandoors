@@ -26,7 +26,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${product.name} | ArtisanDoors`,
       description: product.shortDescription,
-      images: [{ url: product.images[0].src }],
+      images: [
+        {
+          url: product.images[0].src,
+          width: 1200,
+          height: 630,
+          alt: `${product.name} | ArtisanDoors`,
+        },
+      ],
     },
   };
 }
@@ -41,7 +48,27 @@ export default async function ProductDetailPage({ params }: Props) {
 
   const relatedProducts = getRelatedProducts(slug, 4);
 
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.shortDescription,
+    image: product.images[0].src,
+    offers: {
+      "@type": "Offer",
+      price: (product.basePrice / 100).toFixed(2),
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
+  };
+
   return (
-    <ProductDetailClient product={product} relatedProducts={relatedProducts} />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <ProductDetailClient product={product} relatedProducts={relatedProducts} />
+    </>
   );
 }

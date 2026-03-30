@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Checkout",
   description:
     "Complete your order for handcrafted ArtisanDoors. Enter shipping details and place your order.",
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Checkout | ArtisanDoors",
     description: "Complete your order for handcrafted ArtisanDoors.",

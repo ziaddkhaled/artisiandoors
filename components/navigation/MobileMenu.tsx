@@ -62,6 +62,7 @@ export function MobileMenu({ isOpen, onClose, cartItemCount }: MobileMenuProps) 
             </Dialog.Overlay>
             <Dialog.Content asChild>
               <motion.div
+                id="mobile-nav-dialog"
                 className="fixed inset-x-0 top-0 z-[var(--z-modal)] bg-background p-6 min-h-svh"
                 variants={panelVariants}
                 initial="hidden"
@@ -162,7 +163,7 @@ export function MobileMenu({ isOpen, onClose, cartItemCount }: MobileMenuProps) 
                       <ShoppingBag className="w-6 h-6" />
                       Cart
                       {cartItemCount > 0 && (
-                        <span className="text-[length:var(--text-sm)] text-accent">
+                        <span className="text-[length:var(--text-sm)] text-muted">
                           ({cartItemCount})
                         </span>
                       )}

@@ -89,6 +89,7 @@ export function Navbar() {
                 className="md:hidden p-2 rounded-[12px] hover:bg-foreground/5 transition-colors duration-150"
                 onClick={() => setMobileMenuOpen(true)}
                 aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-nav-dialog"
                 aria-label="Open menu"
               >
                 <Menu className="w-5 h-5" />

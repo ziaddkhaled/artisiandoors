@@ -1,5 +1,6 @@
 import type { CartItem, Order, ShippingInfo } from '@/types';
 import { calculateCartTotals } from './cart';
+import { orderSchema } from './validation';
 
 /**
  * localStorage key for persisting the last placed order.
@@ -48,7 +49,9 @@ export function saveOrder(order: Order): void {
     if (typeof window === 'undefined') return;
     window.localStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(order));
   } catch (error) {
-    console.warn('Failed to save order to localStorage:', error);
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Failed to save order to localStorage:', error);
+    }
   }
 }
 
@@ -64,20 +67,17 @@ export function getLastOrder(): Order | null {
 
     const parsed = JSON.parse(stored);
 
-    // Basic validation
-    if (
-      typeof parsed === 'object' &&
-      parsed !== null &&
-      'id' in parsed &&
-      'items' in parsed &&
-      'total' in parsed
-    ) {
-      return parsed as Order;
+    // Full structural validation via Zod (SEC-002)
+    const result = orderSchema.safeParse(parsed);
+    if (result.success) {
+      return result.data as Order;
     }
 
     return null;
   } catch (error) {
-    console.warn('Failed to load order from localStorage:', error);
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Failed to load order from localStorage:', error);
+    }
     return null;
   }
 }
@@ -90,6 +90,8 @@ export function clearLastOrder(): void {
     if (typeof window === 'undefined') return;
     window.localStorage.removeItem(ORDER_STORAGE_KEY);
   } catch (error) {
-    console.warn('Failed to clear order from localStorage:', error);
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Failed to clear order from localStorage:', error);
+    }
   }
 }

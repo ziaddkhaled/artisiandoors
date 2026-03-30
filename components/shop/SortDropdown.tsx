@@ -25,7 +25,7 @@ export function SortDropdown({ value, onChange }: SortDropdownProps) {
       <DropdownMenu.Trigger asChild>
         <button
           className="flex items-center gap-1.5 px-3 py-2 rounded-[12px] text-[length:var(--text-sm)] border border-foreground/15 hover:border-foreground/30 hover:bg-foreground/5 transition-colors duration-150"
-          aria-haspopup="true"
+          aria-haspopup="menu"
         >
           <ArrowUpDown className="w-3.5 h-3.5" />
           {currentLabel}

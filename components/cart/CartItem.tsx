@@ -89,7 +89,7 @@ export function CartItem({
             <motion.button
               onClick={() => onRemove(item.id)}
               aria-label={`Remove ${item.productName} from cart`}
-              className="p-1.5 rounded-[8px] text-muted hover:text-error hover:bg-error-light transition-colors duration-150"
+              className="p-2.5 rounded-[8px] text-muted hover:text-error hover:bg-error-light transition-colors duration-150"
               whileHover={prefersReducedMotion ? undefined : { scale: 1.1 }}
               whileTap={prefersReducedMotion ? undefined : { scale: 0.9 }}
               transition={{ duration: 0.1 }}

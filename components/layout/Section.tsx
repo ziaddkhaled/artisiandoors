@@ -8,6 +8,7 @@ interface SectionProps {
   id?: string;
   containerClassName?: string;
   fullWidth?: boolean;
+  ariaLabel?: string;
 }
 
 export function Section({
@@ -17,10 +18,12 @@ export function Section({
   id,
   containerClassName,
   fullWidth = false,
+  ariaLabel,
 }: SectionProps) {
   return (
     <section
       id={id}
+      aria-label={ariaLabel}
       className={cn(
         "py-12 lg:py-20",
         variant === "light" && "bg-background text-foreground",

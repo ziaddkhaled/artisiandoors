@@ -76,3 +76,54 @@ export type EmailSignupData = z.infer<typeof emailSignupSchema>;
 
 /** @deprecated Use EmailSignupData instead */
 export type EmailFormData = EmailSignupData;
+
+// ── SelectedOptions Schema ────────────────────────────────────────────
+
+export const selectedOptionsSchema = z.object({
+  material: z.string(),
+  finish: z.string(),
+  size: z.string(),
+  hardware: z.string(),
+});
+
+// ── CartItem Schema (SEC-003) ─────────────────────────────────────────
+// Validates the full CartItem shape when deserializing from localStorage.
+
+export const cartItemSchema = z.object({
+  id: z.string().min(1).max(500),
+  productSlug: z.string().min(1).max(200),
+  productName: z.string().min(1).max(500),
+  productImage: z.string().min(1).max(2000),
+  selectedOptions: selectedOptionsSchema,
+  selectedOptionsLabels: z.record(z.string(), z.string().max(500)),
+  quantity: z.number().int().min(1).max(99),
+  unitPrice: z.number().int().min(0),
+});
+
+// ── ShippingInfo Schema ───────────────────────────────────────────────
+
+export const shippingInfoSchema = z.object({
+  firstName: z.string().min(1).max(100).trim(),
+  lastName: z.string().min(1).max(100).trim(),
+  email: z.string().email().max(320),
+  phone: z.string().min(1).max(30),
+  address: z.string().min(1).max(500).trim(),
+  city: z.string().min(1).max(200).trim(),
+  state: z.string().min(1).max(200).trim(),
+  zip: z.string().min(1).max(20),
+  country: z.string().min(1).max(200).trim(),
+});
+
+// ── Order Schema (SEC-002) ────────────────────────────────────────────
+// Validates the full Order shape when deserializing from localStorage.
+
+export const orderSchema = z.object({
+  id: z.string().min(1).max(100),
+  items: z.array(cartItemSchema).min(1),
+  subtotal: z.number().int().min(0),
+  tax: z.number().int().min(0),
+  total: z.number().int().min(0),
+  shipping: shippingInfoSchema,
+  status: z.enum(['pending', 'confirmed', 'processing', 'shipped', 'delivered']),
+  createdAt: z.string().min(1),
+});
