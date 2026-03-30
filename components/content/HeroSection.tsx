@@ -102,7 +102,7 @@ export function HeroSection() {
             >
               <div className="relative aspect-[3/4] w-full rounded-[12px] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76cb?w=800&q=80"
+                  src="https://picsum.photos/800/1067"
                   alt="Luxury bespoke entrance door with elegant architectural details"
                   fill
                   className="object-cover"
